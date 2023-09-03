@@ -241,7 +241,7 @@ model is illustrated as follows.
 .. image:: https://download.pytorch.org/torchaudio/doc-assets/avsr/architecture.png
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-302
+.. GENERATED FROM PYTHON SOURCE LINES 205-301
 
 .. code-block:: default
 
@@ -301,15 +301,14 @@ model is illustrated as follows.
             self.token_processor = token_processor
 
             self.state = None
-            self.hypothesis = None
+            self.hypotheses = None
 
         def forward(self, audio, video):
             audio, video = self.preprocessor(audio, video)
             feats = self.model(audio.unsqueeze(0), video.unsqueeze(0))
             length = torch.tensor([feats.size(1)], device=audio.device)
-            hypos, self.state = self.decoder.infer(feats, length, 10, state=self.state, hypothesis=self.hypothesis)
-            self.hypothesis = hypos[0]
-            transcript = self.token_processor(self.hypothesis[0], lstrip=False)
+            self.hypotheses, self.state = self.decoder.infer(feats, length, 10, state=self.state, hypothesis=self.hypotheses)
+            transcript = self.token_processor(self.hypotheses[0][0], lstrip=False)
             return transcript
 
 
@@ -343,7 +342,7 @@ model is illustrated as follows.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 303-313
+.. GENERATED FROM PYTHON SOURCE LINES 302-312
 
 4. The main process
 -------------------
@@ -356,7 +355,7 @@ The execution flow of the main process is as follows:
 4. Clean up
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 313-392
+.. GENERATED FROM PYTHON SOURCE LINES 312-391
 
 .. code-block:: default
 
@@ -420,7 +419,7 @@ The execution flow of the main process is as follows:
                 video, audio = cacher(video, audio)
                 pipeline.state, pipeline.hypothesis = None, None
                 transcript = pipeline(audio, video.float())
-                print(transcript, end="", flush=True)
+                print(transcript, end="\r", flush=True)
                 num_video_frames = 0
                 video_chunks = []
                 audio_chunks = []
@@ -440,7 +439,7 @@ The execution flow of the main process is as follows:
         )
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 393-403
+.. GENERATED FROM PYTHON SOURCE LINES 392-402
 
 .. code::
 
@@ -453,7 +452,7 @@ The execution flow of the main process is as follows:
    hello world
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 406-408
+.. GENERATED FROM PYTHON SOURCE LINES 405-407
 
 Tag: :obj:`torchaudio.io`
 

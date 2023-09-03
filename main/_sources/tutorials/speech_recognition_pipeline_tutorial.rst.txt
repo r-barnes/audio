@@ -77,7 +77,7 @@ Preparation
  .. code-block:: none
 
     2.1.0.dev20230901
-    2.2.0.dev20230902
+    2.2.0.dev20230905
     cuda
 
 
@@ -182,7 +182,7 @@ fetch the pre-trained weights and load it into the model.
  .. code-block:: none
 
     Downloading: "https://download.pytorch.org/torchaudio/models/wav2vec2_fairseq_base_ls960_asr_ls960.pth" to /root/.cache/torch/hub/checkpoints/wav2vec2_fairseq_base_ls960_asr_ls960.pth
-      0%|          | 0.00/360M [00:00<?, ?B/s]     10%|#         | 37.4M/360M [00:00<00:00, 392MB/s]     21%|##        | 74.8M/360M [00:00<00:00, 344MB/s]     30%|###       | 110M/360M [00:00<00:00, 354MB/s]      41%|####1     | 148M/360M [00:00<00:00, 371MB/s]     53%|#####2    | 189M/360M [00:00<00:00, 394MB/s]     63%|######3   | 227M/360M [00:00<00:00, 389MB/s]     73%|#######3  | 265M/360M [00:00<00:00, 372MB/s]     83%|########3 | 300M/360M [00:00<00:00, 348MB/s]     93%|#########2| 334M/360M [00:00<00:00, 338MB/s]    100%|##########| 360M/360M [00:01<00:00, 357MB/s]
+      0%|          | 0.00/360M [00:00<?, ?B/s]      5%|4         | 16.7M/360M [00:00<00:02, 175MB/s]      9%|9         | 33.4M/360M [00:00<00:02, 163MB/s]     20%|##        | 72.7M/360M [00:00<00:01, 273MB/s]     31%|###1      | 113M/360M [00:00<00:00, 330MB/s]      42%|####1     | 151M/360M [00:00<00:00, 353MB/s]     53%|#####2    | 191M/360M [00:00<00:00, 376MB/s]     64%|######4   | 231M/360M [00:00<00:00, 390MB/s]     75%|#######5  | 270M/360M [00:00<00:00, 398MB/s]     86%|########6 | 310M/360M [00:00<00:00, 404MB/s]     97%|#########7| 350M/360M [00:01<00:00, 407MB/s]    100%|##########| 360M/360M [00:01<00:00, 363MB/s]
     <class 'torchaudio.models.wav2vec2.model.Wav2Vec2Model'>
 
 
@@ -541,7 +541,7 @@ a model and getting the emission is as short as two lines.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.925 seconds)
+   **Total running time of the script:** ( 0 minutes  6.956 seconds)
 
 
 .. _sphx_glr_download_tutorials_speech_recognition_pipeline_tutorial.py:
